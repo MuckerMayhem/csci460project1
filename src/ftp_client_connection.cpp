@@ -30,7 +30,9 @@ void connectToServer(int& socketDescriptor, bool& isConnected, const char* serve
 	int result = inet_pton(AF_INET, serverIP, &server_address.sin_addr); 
 	// https://man7.org/linux/man-pages/man3/inet_pton.3.html
 
-	if ((socketDescriptor = socket(server_address.sin_family, SOCK_STREAM, 0) < 0)) { // returns 0 on success, or -1 if it fails. 
+	socketDescriptor = socket(server_address.sin_family, SOCK_STREAM, 0);
+
+	if (socketDescriptor < 0) { // returns 0 on success, or -1 if it fails. 
 		cout << "An error occured, connection was not established!\n";
 		cout << "Error: " << strerror(errno) << endl;
 		return;

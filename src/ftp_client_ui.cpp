@@ -1,8 +1,17 @@
 /**
- *  @file: ftp_client_ui.hpp
- *  @author: Name, Student Number, Section,  CSCI 460, VIU
- *  @version: 1.0.0
- *  @modified: June 22, 2020
+ * @file: ftp_client_ui.hpp
+ * @author: Cole Houlihan, 655275501, Navodit Kaushal, 656 656 519, Section 2, CSCI 460, VIU
+ * @version: 1.0.0
+ * @modified: June 24, 2020
  *
  */
 
+#include "ftp_client_ui.hpp"
+
+void getUserCommand() {
+	return;
+}
+
+void showFtpResponse(std::string response) {
+	return;
+}
