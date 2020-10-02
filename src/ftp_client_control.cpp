@@ -1,6 +1,6 @@
 /**
  * @file: ftp_client_control.cpp
- * @author: Name, Student Number, Section, CSCI 460, VIU
+ * @author: Cole Houlihan, 655275501, Navodit Kaushal, 656 656 519, Section 2, CSCI 460, VIU
  * @version: 1.0.0
  * @modified: June 24, 2020
  *

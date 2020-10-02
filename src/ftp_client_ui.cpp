@@ -12,6 +12,10 @@ void getUserCommand() {
 	return;
 }
 
+void interpretAndHandleUserCommand(std::string command) {
+	return;
+}
+
 void showFtpResponse(std::string response) {
 	return;
 }

@@ -62,15 +62,17 @@ int main(int argc, char** argv) {
     //Check whether the connection established or not
     if(isControlConnectionAvailable()) {
         usleep(5000);
-	//Receive server response and show it to the user
+	    //Receive server response and show it to the user
         char* response = new char[FTP_RESPONSE_MAX_LENGTH];
         memset(response, 0, FTP_RESPONSE_MAX_LENGTH);
         if(receiveOnControl(response, FTP_RESPONSE_MAX_LENGTH) != -1) {
             showFtpResponse(response);
         }
         delete [] response;
-	//Accept and handle user command
-        while(1) {
+
+	
+        while(1) { //Accept and handle user command
+            printf("csci460Ftp>>");
             getUserCommand();
         }
     }

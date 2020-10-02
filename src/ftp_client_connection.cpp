@@ -21,18 +21,18 @@ void connectToServer(int& socketDescriptor, bool& isConnected, const char* serve
 	struct sockaddr_in server_address;
 
 	server_address.sin_family = AF_INET;
-	//AF_INET is the IPv4 protocol, SOCK_STREAM is the chosen type which provides 'reliable, two-way, connection based byte streams'
 	
 	server_address.sin_port = htons(serverPort); 
 	// https://linux.die.net/man/3/htons
 	// https://www.gta.ufrj.br/ensino/eel878/sockets/sockaddr_inman.html
 	
+	//AF_INET is the IPv4 protocol, SOCK_STREAM is the chosen type which provides 'reliable, two-way, connection based byte streams'
 	int result = inet_pton(AF_INET, serverIP, &server_address.sin_addr); 
 	// https://man7.org/linux/man-pages/man3/inet_pton.3.html
 
-	socketDescriptor = socket(server_address.sin_family, SOCK_STREAM, 0);
+	socketDescriptor = socket(server_address.sin_family, SOCK_STREAM, 0); // returns 0 on success, or -1 if it fails. 
 
-	if (socketDescriptor < 0) { // returns 0 on success, or -1 if it fails. 
+	if (socketDescriptor < 0) {
 		cout << "An error occured, connection was not established!\n";
 		cout << "Error: " << strerror(errno) << endl;
 		return;
