@@ -10,7 +10,7 @@
 
 #include <string>
 
-#define FTP_CLIENT_PROMT "CSCI460FTP>>"
+#define FTP_CLIENT_PROMPT "CSCI460FTP>>"
 
 
 void getUserCommand();

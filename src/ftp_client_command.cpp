@@ -30,19 +30,12 @@ void handleCommandHelp() {
 
 //========================================================================================================= DONE
 void handleCommandUser(string username, string serverResponses[], int& serverResponseCount) {
-    // D2
-    // Calls function handleSimpleCommandResponse() with "checkAuthentication" parameter value "true"
     username = "USER " + username; 
     handleSimpleCommand(username, true, serverResponses, serverResponseCount); 
-        // Sends a 'USER <username>' request meesage to the FTP Server.
-        // Receives response from FTP Server.
-        // Returns server responses and response count through 'serverResponses' and 'serverResponseCount' parameters respectively. 
-        // to perform the activities mentioned above.
 }
 
 //========================================================================================================= DONE
 void handleCommandPassword(string password, string serverResponses[], int& serverResponseCount) {
-    //D2
     password = "PASS " + password;
 	handleSimpleCommand( password, true, serverResponses, serverResponseCount);
 }
@@ -53,7 +46,6 @@ void handleCommandDirectory(string serverResponses[], int& serverResponseCount) 
 
 //========================================================================================================= DONE
 void handleCommandPrintDirectory(string serverResponses[], int& serverResponseCount) {
-    //D2
 	handleSimpleCommand("PWD", false, serverResponses, serverResponseCount);
 }
 
@@ -71,9 +63,7 @@ void handleCommandGetFile(string filename, string serverResponses[], int& server
 
 //========================================================================================================= DONE
 void handleCommandQuit(string serverResponses[], int& serverResponseCount) {
-    //D2
 	handleSimpleCommand("QUIT", false, serverResponses, serverResponseCount);
-
 	disconnectControlConnection();
 	exit(0);
 }
@@ -94,38 +84,31 @@ void handleRETR(string filename, string serverResponses[], int& serverResponseCo
 //========================================================================================================= DONE
 void handleSimpleCommand(string ftpCommand, bool checkAuthentication, string serverResponses[], int& serverResponseCount) {
 
-	printf("\nBEGIN DEBUG\n");
     char buffer[BUFFER_SIZE] = {0};
     int sent_bytes = sendOnControl(ftpCommand.c_str(), BUFFER_SIZE);
-        // Sends 'ftpCommand' request message to FTP server on the control connection.
+    // Sends 'ftpCommand' request message to FTP server on the control connection.
+
     int received_bytes = receiveOnControl(buffer, BUFFER_SIZE);
-        // Receives the response from the server against the request.
-	cout << "RECEIVED BYTES: " << received_bytes << endl;;
-	cout << "RECEIVED BUFFER: " <<  buffer << endl;;
+    // Receives the response from the server against the request.
+
     if (received_bytes == 0 && checkAuthentication) {
         printf("No response received!\n");
 		exit(0);
     }
-    // If the response is unsuccessful and checkAuthentication 
-    // parameter value is true, quits the application.
+
     char* tokenized = strtok(buffer," ");
     int i = 0;
     while(tokenized != NULL){
         serverResponses[i] = tokenized;
-        cout << "--------------------------------------"<<endl;
-        cout << " Tokenized Buffer word "<< i << ": " << tokenized << endl;
-        cout << " Tokenized ServerResponses "<< i << ": " << serverResponses[i] << endl;
         tokenized = strtok(NULL," ");
         i++;
     }
-    cout << "--------------------------------------"<<endl;
-    cout << "RECIEVED BYTES: " << received_bytes <<endl;
+
 	serverResponseCount = received_bytes;
-    cout << "i: " << i << endl << endl;
-    
     //https://fresh2refresh.com/c-programming/c-strings/c-strtok-function/
-    // Returns server responses and response count through 'serverResponses' 
-    // and 'serverResponseCount' parameters respectively.
+    cout << "=================== SERVER RESPONSE TEST INSIDE  handleSimpleCommand() ===================" << endl;
+    cout << "COMMAND: " << ftpCommand << endl;
+    cout << "RESPONSE: " << serverResponses[0] << endl;
 	return;
 }
 
