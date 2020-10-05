@@ -106,9 +106,6 @@ void handleSimpleCommand(string ftpCommand, bool checkAuthentication, string ser
 
 	serverResponseCount = received_bytes;
     //https://fresh2refresh.com/c-programming/c-strings/c-strtok-function/
-    cout << "=================== SERVER RESPONSE TEST INSIDE  handleSimpleCommand() ===================" << endl;
-    cout << "COMMAND: " << ftpCommand << endl;
-    cout << "RESPONSE: " << serverResponses[0] << endl;
 	return;
 }
 
