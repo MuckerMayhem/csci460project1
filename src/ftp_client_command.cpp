@@ -12,6 +12,7 @@
 #include "ftp_client_command.hpp"
 #include "ftp_client_control.hpp"
 #include "ftp_client_ui.hpp"
+#include "ftp_server_response.hpp"
 
 //========================================================================================================= DONE
 void handleCommandHelp() {
@@ -42,6 +43,7 @@ void handleCommandPassword(string password, string serverResponses[], int& serve
 
 //=========================================================================================================
 void handleCommandDirectory(string serverResponses[], int& serverResponseCount) {
+    handleSimpleCommand("DIR", false, serverResponses, serverResponseCount);
 }
 
 //========================================================================================================= DONE
@@ -65,7 +67,6 @@ void handleCommandGetFile(string filename, string serverResponses[], int& server
 void handleCommandQuit(string serverResponses[], int& serverResponseCount) {
 	handleSimpleCommand("QUIT", false, serverResponses, serverResponseCount);
 	disconnectControlConnection();
-	exit(0);
 }
 
 //=========================================================================================================
@@ -84,27 +85,55 @@ void handleRETR(string filename, string serverResponses[], int& serverResponseCo
 //========================================================================================================= DONE
 void handleSimpleCommand(string ftpCommand, bool checkAuthentication, string serverResponses[], int& serverResponseCount) {
 
+
     char buffer[BUFFER_SIZE] = {0};
-    int sent_bytes = sendOnControl(ftpCommand.c_str(), BUFFER_SIZE);
+    sendOnControl(ftpCommand.c_str(), BUFFER_SIZE);
     // Sends 'ftpCommand' request message to FTP server on the control connection.
 
     int received_bytes = receiveOnControl(buffer, BUFFER_SIZE);
     // Receives the response from the server against the request.
 
     if (received_bytes == 0 && checkAuthentication) {
-        printf("No response received!\n");
+        cout << "No response received!" << endl;
 		exit(0);
     }
 
-    char* tokenized = strtok(buffer," ");
-    int i = 0;
-    while(tokenized != NULL){
-        serverResponses[i] = tokenized;
-        tokenized = strtok(NULL," ");
-        i++;
-    }
+	serverResponses[0] = (string)buffer;
+	serverResponseCount = 1;
+	//begin looping through the received buffers until we see the first return code again
+	//thus signalling we have received the entire message.
+	if (buffer[3] == '-') {
+		int i = 2;
+		string code = serverResponses[0].substr(0, 3);
 
-	serverResponseCount = received_bytes;
+		receiveOnControl(buffer, BUFFER_SIZE);
+		serverResponses[1] = (string)buffer;
+		string next_code = serverResponses[1].substr(0, 3);
+		serverResponseCount++;
+
+		while(code != next_code) {
+			receiveOnControl(buffer, BUFFER_SIZE);
+			serverResponses[i] = (string)buffer;
+			next_code = serverResponses[i].substr(0, 3);
+			i++;
+			serverResponseCount++;
+		}
+	}
+
+
+
+    // char* tokenized = strtok(buffer," ");
+    // int i = 0;
+    // while(tokenized != NULL){
+    //     serverResponses[i] += tokenized;
+    //     serverResponses[i] += " ";
+    //     tokenized = strtok(NULL," ");
+    //     // i++;
+    // }
+
+    // cout << "SERV RESPONSE: " << serverResponses[0] << endl;
+
+	serverResponseCount = 1;
     //https://fresh2refresh.com/c-programming/c-strings/c-strtok-function/
 	return;
 }
