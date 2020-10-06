@@ -120,19 +120,6 @@ void handleSimpleCommand(string ftpCommand, bool checkAuthentication, string ser
 		}
 	}
 
-
-
-    // char* tokenized = strtok(buffer," ");
-    // int i = 0;
-    // while(tokenized != NULL){
-    //     serverResponses[i] += tokenized;
-    //     serverResponses[i] += " ";
-    //     tokenized = strtok(NULL," ");
-    //     // i++;
-    // }
-
-    // cout << "SERV RESPONSE: " << serverResponses[0] << endl;
-
 	serverResponseCount = 1;
     //https://fresh2refresh.com/c-programming/c-strings/c-strtok-function/
 	return;
