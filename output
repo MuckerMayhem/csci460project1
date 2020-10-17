@@ -1,328 +1,65 @@
+ test/bin/ftpclienttest
 Running 3 test cases...
-FTP Server PID: 14288
-FTP Server at IP address: 192.168.18.35 is starting.........
+FTP Server PID: 2603
+FTP Server at IP address: 192.168.18.37 is starting.........
 FTP Server Port: 2020 is waiting for client connection.........
 FTP Server: Client connection accepted....
-Stopping FTP Server (PID: 14288)
-FTP Server PID: 14290
-FTP Server at IP address: 192.168.18.35 is starting.........
+FTP Server: Received command: Hello!
+Stopping FTP Server (PID: 2603)
+FTP Server PID: 2605
+FTP Server at IP address: 192.168.18.37 is starting.........
 FTP Server Port: 2020 is waiting for client connection.........
 FTP Server: Client connection accepted....
-Stopping FTP Server (PID: 14290)
-FTP Server PID: 14292
-FTP Server at IP address: 192.168.18.35 is starting.........
+Stopping FTP Server (PID: 2605)
+FTP Server: Received command: Hello!
+FTP Server PID: 2607
+FTP Server at IP address: 192.168.18.37 is starting.........
 FTP Server Port: 2020 is waiting for client connection.........
-
-test/src/ftp_client_test.cpp(163): error: in "ftp_client_test_suite/ftp_client_command": TEST: Host IP from Passive Response
-test/src/ftp_client_test.cpp(164): error: in "ftp_client_test_suite/ftp_client_command": TEST: Host Port from Passive Response
 FTP Server: Client connection accepted....
-
-BEGIN DEBUG
 FTP Server: Received command: USER nobody
-RECEIVED BYTES: 23
-RECEIVED BUFFER: 530 Invalid user name.
-
---------------------------------------
- Tokenized Buffer word 0: 530
- Tokenized ServerResponses 0: 530
---------------------------------------
- Tokenized Buffer word 1: Invalid
- Tokenized ServerResponses 1: Invalid
---------------------------------------
- Tokenized Buffer word 2: user
- Tokenized ServerResponses 2: user
---------------------------------------
- Tokenized Buffer word 3: name.
- Tokenized ServerResponses 3: name.
-
---------------------------------------
-RECIEVED BYTES: 23
-i: 4
-
-test/src/ftp_client_test.cpp(188): error: in "ftp_client_test_suite/ftp_client_command": TEST: (Simple Command) Invalid User Response Count 1
-test/src/ftp_client_test.cpp(190): error: in "ftp_client_test_suite/ftp_client_command": TEST: (Simple Command) Invalid User Response
-FTP Server: Client connection accepted....
 FTP Server: User UNAUTHORIZED.......
-FTP Server: Closing client's connections.......
-
-BEGIN DEBUG
-FTP Server: Received command: USER csci460
-RECEIVED BYTES: 34
-RECEIVED BUFFER: 331 Username okay, need password.
-
---------------------------------------
- Tokenized Buffer word 0: 331
- Tokenized ServerResponses 0: 331
---------------------------------------
- Tokenized Buffer word 1: Username
- Tokenized ServerResponses 1: Username
---------------------------------------
- Tokenized Buffer word 2: okay,
- Tokenized ServerResponses 2: okay,
---------------------------------------
- Tokenized Buffer word 3: need
- Tokenized ServerResponses 3: need
---------------------------------------
- Tokenized Buffer word 4: password.
- Tokenized ServerResponses 4: password.
-
---------------------------------------
-RECIEVED BYTES: 34
-i: 5
-
-test/src/ftp_client_test.cpp(212): error: in "ftp_client_test_suite/ftp_client_command": TEST: (Simple Command) Valid User Response Count 1
-test/src/ftp_client_test.cpp(214): error: in "ftp_client_test_suite/ftp_client_command": TEST: (Simple Command) Valid User Response
-
-BEGIN DEBUG
-FTP Server: Received command: PASS nopass
-RECEIVED BYTES: 19
-RECEIVED BUFFER: 530 Not logged in.
-
---------------------------------------
- Tokenized Buffer word 0: 530
- Tokenized ServerResponses 0: 530
---------------------------------------
- Tokenized Buffer word 1: Not
- Tokenized ServerResponses 1: Not
---------------------------------------
- Tokenized Buffer word 2: logged
- Tokenized ServerResponses 2: logged
---------------------------------------
- Tokenized Buffer word 3: in.
-
- Tokenized ServerResponses 3: in.
-
---------------------------------------
-RECIEVED BYTES: 19
-i: 4
-
-test/src/ftp_client_test.cpp(221): error: in "ftp_client_test_suite/ftp_client_command": TEST: Simple Command Invalid Password Response Count 1
-test/src/ftp_client_test.cpp(223): error: in "ftp_client_test_suite/ftp_client_command": TEST: (Simple Command) Invalid Password Response
 FTP Server: Client connection accepted....
+FTP Server: Received command: USER csci460
+FTP Server: Received command: PASS nopass
 FTP Server: User Not logged in.......
+FTP Server: Client connection accepted....
+FTP Server: Received command: USER csci460
+FTP Server: Received command: PASS 460pass
+FTP Server: Received command: PWD
+FTP Server: Received command: PASV
+FTP Server Port: 35453 is waiting for client connection.........
+FTP Server: Client connection accepted....
+FTP Server: Received command: NLST
+FTP Server: Closing client's connections.......
+FTP Server: Closing client's connections.......
+FTP Server: Received command: PWD
+FTP Server: Received command: CDUP
+FTP Server: Received command: PWD
+FTP Server: Received command: CWD nodir
+FTP Server: Received command: PWD
+FTP Server: Received command: CWD ./
+FTP Server: Received command: PWD
+FTP Server: Received command: CWD ../
+FTP Server: Received command: PWD
+FTP Server: Received command: CWD resource/../..
+FTP Server: Received command: PWD
+FTP Server: Received command: CWD resource
+FTP Server: Received command: PWD
+FTP Server: Received command: PASV
+FTP Server Port: 46605 is waiting for client connection.........
+FTP Server: Client connection accepted....
+FTP Server: Received command: RETR nofile
+FTP Server: nofile does not exist.
+FTP Server: Received command: PASV
+FTP Server Port: 41051 is waiting for client connection.........
+FTP Server: Client connection accepted....
+FTP Server: Received command: RETR duck.jpeg
+FTP Server: Received command: PWD
+FTP Server: Received command: CDUP
+FTP Server: Received command: PWD
+FTP Server: Received command: QUIT
+FTP Server: Responding QUIT command.......
+Stopping FTP Server (PID: 2607)
 FTP Server: Closing client's connections.......
 
-BEGIN DEBUG
-FTP Server: Received command: USER csci460
-RECEIVED BYTES: 34
-RECEIVED BUFFER: 331 Username okay, need password.
-
---------------------------------------
- Tokenized Buffer word 0: 331
- Tokenized ServerResponses 0: 331
---------------------------------------
- Tokenized Buffer word 1: Username
- Tokenized ServerResponses 1: Username
---------------------------------------
- Tokenized Buffer word 2: okay,
- Tokenized ServerResponses 2: okay,
---------------------------------------
- Tokenized Buffer word 3: need
- Tokenized ServerResponses 3: need
---------------------------------------
- Tokenized Buffer word 4: password.
-
- Tokenized ServerResponses 4: password.
-
---------------------------------------
-RECIEVED BYTES: 34
-i: 5
-
-test/src/ftp_client_test.cpp(249): error: in "ftp_client_test_suite/ftp_client_command": TEST: USER Response Count 1
-test/src/ftp_client_test.cpp(251): error: in "ftp_client_test_suite/ftp_client_command": TEST: USER Response
-
-BEGIN DEBUG
-FTP Server: Received command: PASS 460pass
-RECEIVED BYTES: 29
-RECEIVED BUFFER: 230 User logged in, proceed.
-
---------------------------------------
- Tokenized Buffer word 0: 230
- Tokenized ServerResponses 0: 230
---------------------------------------
- Tokenized Buffer word 1: User
- Tokenized ServerResponses 1: User
---------------------------------------
- Tokenized Buffer word 2: logged
- Tokenized ServerResponses 2: logged
---------------------------------------
- Tokenized Buffer word 3: in,
- Tokenized ServerResponses 3: in,
---------------------------------------
- Tokenized Buffer word 4: proceed.
-
- Tokenized ServerResponses 4: proceed.
-
---------------------------------------
-RECIEVED BYTES: 29
-i: 5
-
-test/src/ftp_client_test.cpp(260): error: in "ftp_client_test_suite/ftp_client_command": TEST: Password Response Count 1
-test/src/ftp_client_test.cpp(262): error: in "ftp_client_test_suite/ftp_client_command": TEST: Password Response
-
-BEGIN DEBUG
-FTP Server: Received command: PWD
-RECEIVED BYTES: 35
-RECEIVED BUFFER: /home/student/houlihac/460/project1
---------------------------------------
- Tokenized Buffer word 0: /home/student/houlihac/460/project1
- Tokenized ServerResponses 0: /home/student/houlihac/460/project1
---------------------------------------
-RECIEVED BYTES: 35
-i: 1
-
-test/src/ftp_client_test.cpp(286): error: in "ftp_client_test_suite/ftp_client_command": TEST: DIR Response Count 4
-test/src/ftp_client_test.cpp(288): error: in "ftp_client_test_suite/ftp_client_command": TEST: DIR Passive Success Response
-test/src/ftp_client_test.cpp(291): error: in "ftp_client_test_suite/ftp_client_command": TEST: DIR Data Connection Success Response
-test/src/ftp_client_test.cpp(296): error: in "ftp_client_test_suite/ftp_client_command": TEST: DIR Data Connection Close Response
-
-BEGIN DEBUG
-FTP Server: Received command: PWD
-RECEIVED BYTES: 35
-RECEIVED BUFFER: /home/student/houlihac/460/project1
---------------------------------------
- Tokenized Buffer word 0: /home/student/houlihac/460/project1
- Tokenized ServerResponses 0: /home/student/houlihac/460/project1
---------------------------------------
-RECIEVED BYTES: 35
-i: 1
-
-test/src/ftp_client_test.cpp(323): error: in "ftp_client_test_suite/ftp_client_command": TEST: CDUP Unsuccessful Response Count 1
-test/src/ftp_client_test.cpp(325): error: in "ftp_client_test_suite/ftp_client_command": TEST: CDUP Unsuccessful Response
-
-BEGIN DEBUG
-FTP Server: Received command: PWD
-RECEIVED BYTES: 35
-RECEIVED BUFFER: /home/student/houlihac/460/project1
---------------------------------------
- Tokenized Buffer word 0: /home/student/houlihac/460/project1
- Tokenized ServerResponses 0: /home/student/houlihac/460/project1
---------------------------------------
-RECIEVED BYTES: 35
-i: 1
-
-test/src/ftp_client_test.cpp(353): error: in "ftp_client_test_suite/ftp_client_command": TEST: CWD Fail Response Count 1
-test/src/ftp_client_test.cpp(355): error: in "ftp_client_test_suite/ftp_client_command": TEST: CWD Fail Response
-
-BEGIN DEBUG
-FTP Server: Received command: PWD
-RECEIVED BYTES: 35
-RECEIVED BUFFER: /home/student/houlihac/460/project1
---------------------------------------
- Tokenized Buffer word 0: /home/student/houlihac/460/project1
- Tokenized ServerResponses 0: /home/student/houlihac/460/project1
---------------------------------------
-RECIEVED BYTES: 35
-i: 1
-
-test/src/ftp_client_test.cpp(380): error: in "ftp_client_test_suite/ftp_client_command": TEST: CWD Invalid Path Response Count 1
-test/src/ftp_client_test.cpp(382): error: in "ftp_client_test_suite/ftp_client_command": TEST: CWD Invalid Path Response
-
-BEGIN DEBUG
-FTP Server: Received command: PWD
-RECEIVED BYTES: 35
-RECEIVED BUFFER: /home/student/houlihac/460/project1
---------------------------------------
- Tokenized Buffer word 0: /home/student/houlihac/460/project1
- Tokenized ServerResponses 0: /home/student/houlihac/460/project1
---------------------------------------
-RECIEVED BYTES: 35
-i: 1
-
-test/src/ftp_client_test.cpp(407): error: in "ftp_client_test_suite/ftp_client_command": TEST: CWD Invalid Path Response Count 1
-test/src/ftp_client_test.cpp(409): error: in "ftp_client_test_suite/ftp_client_command": TEST: CWD Invalid Path Response
-
-BEGIN DEBUG
-FTP Server: Received command: PWD
-RECEIVED BYTES: 35
-RECEIVED BUFFER: /home/student/houlihac/460/project1
---------------------------------------
- Tokenized Buffer word 0: /home/student/houlihac/460/project1
- Tokenized ServerResponses 0: /home/student/houlihac/460/project1
---------------------------------------
-RECIEVED BYTES: 35
-i: 1
-
-test/src/ftp_client_test.cpp(433): error: in "ftp_client_test_suite/ftp_client_command": TEST: CWD Invalid Path Response Count 1
-test/src/ftp_client_test.cpp(435): error: in "ftp_client_test_suite/ftp_client_command": TEST: CWD Invalid Path  Response
-
-BEGIN DEBUG
-FTP Server: Received command: PWD
-RECEIVED BYTES: 35
-RECEIVED BUFFER: /home/student/houlihac/460/project1
---------------------------------------
- Tokenized Buffer word 0: /home/student/houlihac/460/project1
- Tokenized ServerResponses 0: /home/student/houlihac/460/project1
---------------------------------------
-RECIEVED BYTES: 35
-i: 1
-
-test/src/ftp_client_test.cpp(459): error: in "ftp_client_test_suite/ftp_client_command": TEST: CWD Successful Response Count 1
-test/src/ftp_client_test.cpp(461): error: in "ftp_client_test_suite/ftp_client_command": TEST: CWD Successful Response
-
-BEGIN DEBUG
-FTP Server: Received command: PWD
-RECEIVED BYTES: 35
-RECEIVED BUFFER: /home/student/houlihac/460/project1
---------------------------------------
- Tokenized Buffer word 0: /home/student/houlihac/460/project1
- Tokenized ServerResponses 0: /home/student/houlihac/460/project1
---------------------------------------
-RECIEVED BYTES: 35
-i: 1
-
-test/src/ftp_client_test.cpp(485): error: in "ftp_client_test_suite/ftp_client_command": TEST: GET Unsuccessful Response Count 3
-test/src/ftp_client_test.cpp(487): error: in "ftp_client_test_suite/ftp_client_command": TEST: GET Passive Success Response
-test/src/ftp_client_test.cpp(490): error: in "ftp_client_test_suite/ftp_client_command": TEST: GET Data Connection Success Response
-test/src/ftp_client_test.cpp(493): error: in "ftp_client_test_suite/ftp_client_command": TEST: GET File Unavailable Response
-test/src/ftp_client_test.cpp(500): error: in "ftp_client_test_suite/ftp_client_command": TEST: GET Successful Response Count 3
-test/src/ftp_client_test.cpp(502): error: in "ftp_client_test_suite/ftp_client_command": TEST: GET Passive Success Response
-test/src/ftp_client_test.cpp(505): error: in "ftp_client_test_suite/ftp_client_command": TEST: GET Data Connection Success Response
-test/src/ftp_client_test.cpp(507): error: in "ftp_client_test_suite/ftp_client_command": TEST: GET Data Connection Close Response
-test/src/ftp_client_test.cpp(509): error: in "ftp_client_test_suite/ftp_client_command": TEST: GET File copied
-
-BEGIN DEBUG
-FTP Server: Received command: PWD
-RECEIVED BYTES: 35
-RECEIVED BUFFER: /home/student/houlihac/460/project1
---------------------------------------
- Tokenized Buffer word 0: /home/student/houlihac/460/project1
- Tokenized ServerResponses 0: /home/student/houlihac/460/project1
---------------------------------------
-RECIEVED BYTES: 35
-i: 1
-
-test/src/ftp_client_test.cpp(537): error: in "ftp_client_test_suite/ftp_client_command": TEST: CDUP Successful Response Count 1
-test/src/ftp_client_test.cpp(540): error: in "ftp_client_test_suite/ftp_client_command": TEST: CDUP Successful Response
-
-BEGIN DEBUG
-FTP Server: Received command: PWD
-RECEIVED BYTES: 35
-RECEIVED BUFFER: /home/student/houlihac/460/project1
---------------------------------------
- Tokenized Buffer word 0: /home/student/houlihac/460/project1
- Tokenized ServerResponses 0: /home/student/houlihac/460/project1
---------------------------------------
-RECIEVED BYTES: 35
-i: 1
-
-
-BEGIN DEBUG
-FTP Server: Received command: QUIT
-RECEIVED BYTES: 25
-RECEIVED BUFFER: 226 Closing connection..
-
---------------------------------------
- Tokenized Buffer word 0: 226
- Tokenized ServerResponses 0: 226
---------------------------------------
- Tokenized Buffer word 1: Closing
- Tokenized ServerResponses 1: Closing
---------------------------------------
- Tokenized Buffer word 2: connection..
-
- Tokenized ServerResponses 2: connection..
-
---------------------------------------
-RECIEVED BYTES: 25
-i: 3
+*** No errors detected
