@@ -24,51 +24,53 @@
 // bool isDataConnected = false;	-- Represents the status of the data connection
 
 
-
-void connectToServerControl(const char* serverIP, int serverPort);
 // Sends a control connection request on severPort of a sever whose IP address is equal to serverIP.
 // If the control connection is successful sets its value to controlSocket and 
 // sets isControlConnected to true.
 // Calls connectToServer() function from 'ftp_client_connection.cpp' to do the above.
+void connectToServerControl(const char* serverIP, int serverPort);
 
-void connectToServerData(const char* serverIP, int serverPort);
+
 // Sends a data connection request on severPort of a sever whose IP address is equal to serverIP.
 // If the data connection is successful sets its value to dataSocket and 
 // sets isDataConnected to true.
 // Calls connectToServer function from 'ftp_client_connection.cpp' to do the above.
+void connectToServerData(const char* serverIP, int serverPort);
 
-int sendOnControl(const char* buffer, int length);
+
 // Sends the info in the buffer of length equal to 'length' on control connection.
 // Returns the actual number of bytes sent.
 // Calls sendToServer() function from 'ftp_client_connection.cpp' to do the above.
+int sendOnControl(const char* buffer, int length);
 
-int sendOnData(const char* buffer, int length);
 // Sends the info in the buffer of length equal to 'length' on data connection.
 // Returns the actual number of bytes sent.
 // Calls sendToServer() function from 'ftp_client_connection.cpp' to do the above.
+int sendOnData(const char* buffer, int length);
 
-int receiveOnControl(char* buffer, int length);
 // Receives the info in the buffer of length equal to 'length' on control connection.
 // Returns the actual number of bytes received.
 // Calls receiveFromServer() fucntion from 'ftp_client_connection.cpp' to do the above.
+int receiveOnControl(char* buffer, int length);
 
-int receiveOnData(char* buffer, int length);
 // Receives the info in the buffer of length equal to 'length' on data connection.
 // Returns the actual number of bytes received.
 // Calls receiveFromServer() function from 'ftp_client_connection.cpp' to do the above.
+int receiveOnData(char* buffer, int length);
 
-void disconnectControlConnection();
 // Closes the opened control connection and sets isControlConnected to false;
 // Calls disconnectFromServer() function from 'ftp_client_connection.cpp' to do the above
+void disconnectControlConnection();
 
-void disconnectDataConnection();
 // Closes the opened data connection and sets isDataConnected to false;
 // Call disconnectFromServer() function from 'ftp_client_connection.cpp' to do the above.
+void disconnectDataConnection();
 
-bool isControlConnectionAvailable();
 // Returns the value of isControlConnected.
+bool isControlConnectionAvailable();
 
-bool isDataConnectionAvailable();
 // Returns the value of isDataConnected.
+bool isDataConnectionAvailable();
+
 
 #endif

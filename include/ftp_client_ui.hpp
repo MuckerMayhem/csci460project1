@@ -10,21 +10,19 @@
 
 #include <string>
 
-#define FTP_CLIENT_PROMPT "CSCI460FTP>>"
+#define FTP_CLIENT_PROMT "CSCI460FTP>>"
 
-
-void getUserCommand();
 // Displays a command line prompt as follows:
 //      CSCI460FTP>>
 // Lets user to type command and reads the user command from the prompt.
 // Interprets and handles user command by calling function interpreteAndHandleUserCommand().
+void getUserCommand();
 
-void interpretAndHandleUserCommand(std::string command);
 // Interprets and handles user command
 // Calls appropriate handleCommandXXXX() function from 'ftp_client_command.hpp'.
 // Displays all FTP server responses calling showFtpResponse() function.
+void interpretAndHandleUserCommand(std::string command);
 
-void showFtpResponse(std::string response); 
 // Displays server response to the user.
 // For example, success response of user command
 //      CSCI460FTP>>user csci460
@@ -45,5 +43,7 @@ void showFtpResponse(std::string response);
 //      D       build
 //      D       resource
 //      D       src
+void showFtpResponse(std::string response); 
+
 
 #endif

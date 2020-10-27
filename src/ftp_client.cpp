@@ -34,6 +34,7 @@ using namespace std;
 /*
  * Forward declaration of helper functions
  */
+
 void usage(const char* prog);				// Prints usage text of FTP Client Application
 char* baseName(const char* pathname);			// Returns the name of the code base of FTP Client Application
 

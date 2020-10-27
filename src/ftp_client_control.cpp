@@ -1,8 +1,9 @@
 /**
- * @file: ftp_client_control.cpp
- * @author: Cole Houlihan, 655275501, Navodit Kaushal, 656 656 519, Section 2, CSCI 460, VIU
- * @version: 1.0.0
- * @modified: June 24, 2020
+ * @file: ftp_client_command.cpp
+ * @author: Cole Houlihan,   655 275 501, F20N02, CSCI 460, VIU
+ * @author: Navodit Kaushal, 656 656 519, F20N02, CSCI 460, VIU
+ * @version: 1.0.3
+ * @modified: October 17, 2020
  *
  */
 

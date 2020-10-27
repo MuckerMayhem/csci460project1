@@ -1,42 +1,41 @@
 /**
- * @file: ftp_client_ui.hpp
- * @author: Cole Houlihan, 655275501, Navodit Kaushal, 656 656 519, Section 2,
- * CSCI 460, VIU
- * @version: 1.0.0
- * @modified: October 4, 2020
+ * @file: ftp_client_command.cpp
+ * @author: Cole Houlihan,   655 275 501, F20N02, CSCI 460, VIU
+ * @author: Navodit Kaushal, 656 656 519, F20N02, CSCI 460, VIU
+ * @version: 1.0.3
+ * @modified: October 17, 2020
  *
  */
 
 #include <stdio.h>
 #include <string.h>
-
 #include <algorithm>
 #include <iostream>
 #include <sstream>
 #include <string>
 
-using namespace std;
-
 #include "ftp_client_command.hpp"
 #include "ftp_client_ui.hpp"
 #include "ftp_server_response.hpp"
 
-//=========================================================================================================
-// DONE
+
+
+using namespace std;
+
+//========================================================================================================= DONE
 void getUserCommand() {
 	string input;
-	cout << FTP_CLIENT_PROMPT;
+	cout << FTP_CLIENT_PROMT;
 	getline(cin, input);
 
 	interpretAndHandleUserCommand(input);
 	return;
 }
 
-//=========================================================================================================
-// IN PROGRESS
+//========================================================================================================= IN PROGRESS
 void interpretAndHandleUserCommand(std::string command) {
 	string serverResponse[FTP_RESPONSE_MAX_LENGTH];
-	int serverResponseCount;
+	int serverResponseCount = 0;  //added the " = 0" part
 	string argument = " ";
 	istringstream stream(command);
 	stream >> command;
@@ -46,11 +45,11 @@ void interpretAndHandleUserCommand(std::string command) {
 	// https://stackoverflow.com/questions/3403844/tolower-function-for-c-strings
 
 	// HELP ==================================================
-	if (command == "help") {
+	if (command == FTP_CLIENT_USER_COMMAND_HELP) {
 		handleCommandHelp();
 
 		// USER ==================================================
-	} else if (command == "user") {
+	} else if (command == FTP_CLIENT_USER_COMMAND_USER) {
 		if (argument != " ") {
 			handleCommandUser(argument, serverResponse, serverResponseCount);
 		} else {
@@ -60,7 +59,7 @@ void interpretAndHandleUserCommand(std::string command) {
 		}
 
 		// PASS ==================================================
-	} else if (command == "pass") {
+	} else if (command == FTP_CLIENT_USER_COMMAND_PASSWORD) {
 		if (argument != " ") {
 			handleCommandPassword(argument, serverResponse,
 								  serverResponseCount);
@@ -71,15 +70,15 @@ void interpretAndHandleUserCommand(std::string command) {
 		}
 
 		// PWD ===================================================
-	} else if (command == "pwd") {
+	} else if (command == FTP_CLIENT_USER_COMMAND_PRINT_DIRECTORY) {
 		handleCommandPrintDirectory(serverResponse, serverResponseCount);
 
 		// DIR ===================================================
-	} else if (command == "dir") {
-		handleSimpleCommand("DIR", false, serverResponse, serverResponseCount);
+	} else if (command == FTP_CLIENT_USER_COMMAND_DIRECTORY) {
+		handleCommandDirectory(serverResponse, serverResponseCount);
 
 		// CWD ===================================================
-	} else if (command == "cwd") {
+	} else if (command == FTP_CLIENT_USER_COMMAND_CHANGE_DIRECTORY) {
 		if (argument != " ") {
 			handleCommandChangeDirectory(/*some path*/ argument, serverResponse,
 										 serverResponseCount);
@@ -90,16 +89,16 @@ void interpretAndHandleUserCommand(std::string command) {
 		}
 
 		// CDUP ===================================================
-	} else if (command == "cdup") {
+	} else if (command == FTP_CLIENT_USER_COMMAND_CHANGE_DIRECTORY_UP) {
 		cout << "Changing directory UP" << endl;
 		handleCommandChangeDirectoryUp(serverResponse, serverResponseCount);
 
 		// GET  ===================================================
-	} else if (command == "get") {
+	} else if (command == FTP_CLIENT_USER_COMMAND_GET) {
 		handleCommandGetFile(argument, serverResponse, serverResponseCount);
 
 		// QUIT ==================================================
-	} else if (command == "quit") {
+	} else if (command == FTP_CLIENT_USER_COMMAND_QUIT) {
 		cout << "ENDING PROGRAM" << endl;
 		handleCommandQuit(serverResponse, serverResponseCount);
 
@@ -126,8 +125,7 @@ void interpretAndHandleUserCommand(std::string command) {
 	return;
 }
 
-//=========================================================================================================
-// DONE
+//========================================================================================================= DONE
 void showFtpResponse(std::string response) {
 	cout << response << endl;
 	return;
